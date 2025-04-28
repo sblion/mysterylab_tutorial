@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미스터리랩 튜토리얼</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background: linear-gradient(to bottom, #87CEEB, #4CAF50);
+            color: #4A2E2A;
+            font-family: 'Gowun Dodum', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: url('clouds.png') repeat-x top center, linear-gradient(to bottom, #87CEEB, #4CAF50);
+        }
+
+        .sun {
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, yellow, orange);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+        }
+
+        .hills {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background: url('hills.png') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .container {
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .storybook {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .play,
+        .hint {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .storybook h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #D2691E;
+        }
+
+        .storybook p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="sun"></div>
+        <div class="hills"></div>
+    </div>
+    <div class="container">
+        <div class="storybook p-5">
+            <h1>🌞 미스터리랩 튜토리얼 🌬️</h1>
+            <p> </p>
+            <p>바람과 해가 누가 더 강한지 내기를 했어요. 그들은 길을 걷는 나그네의 외투를 벗기는 사람이 승리한다고 정했죠. </p>
+            <p>과연 이 내기의 승자는 누구일까요? 당신이 직접 해와 바람의 힘을 경험하며 답을 찾아보세요!</p>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="play">
+                    <h3>🔮 플레이 칸</h3>
+                    <input type="text" class="form-control" placeholder="여기에 입력하세요" id="play_input">
+                    <button class="btn btn-warning mt-3" onclick="checkPlay()">확인</button>
+                    <p id="play_output"></p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="hint">
+                    <h3>💡 힌트 칸</h3>
+                    <input type="text" class="form-control" placeholder="숫자를 입력하세요" id="hint_input">
+                    <button class="btn btn-primary mt-3" onclick="checkHint()">확인</button>
+                    <p id="hint_output"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPlay() {
+            let input = document.getElementById('play_input').value;
+            let output = document.getElementById('play_output');
+
+            switch (input) {
+                case 'TiGa':
+                    output.innerHTML = "<p><p><p><img src='TiGa.jpg' style='width: 100%; height: auto;'>";
+                    break;
+                case 'MgTi':
+                    output.innerHTML = "<p><p><p><img src='MgTi.jpg' style='width: 100%; height: auto;'>";
+                    break;
+                default:
+                    output = "❌ 올바른 답을 찾아보세요!";
+            }
+        }
+
+        function checkHint() {
+            let input = document.getElementById('hint_input').value;
+            let output = document.getElementById('hint_output');
+            if (input == '12') {
+                output.innerHTML = '💨 힌트: 강한 힘보다 따뜻한 힘이 더 효과적일지도...?';
+            } else {
+                output.innerHTML = '❓ 해당 숫자의 힌트가 없습니다!';
+            }
+        }
+    </script>
+</body>
+
+</html>
